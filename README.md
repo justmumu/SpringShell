@@ -7,7 +7,7 @@ Vulnerable application original repository: [Spring4Shell-POC](https://github.co
 ## Steps
 
 1. Clone this repository
-2. Run `cd <repository_directory>/vulnapp`
+2. Run `cd <repository_directory>/CVE-2022-22965`
 3. Run `docker-compose up`
 4. Wait for the application to run
-5. Run `nuclei -t <repository_directory>/nuclei-templates/spring4shell.yaml -u http://localhost:8080/helloworld/greeting`
+5. Run `nuclei -t <repository_directory>/nuclei-templates/CVE-2022-22965.yaml -u http://localhost:8080/helloworld/greeting`
